@@ -27,14 +27,17 @@
             $callback=OnSelect,
             $echo=$ships
           ]" />
-        <signal_cue_instantly cue="md.Interact_Menu_API.Add_Action"
-          param="table[
+
+        <do_if value="$ships.cound gt 1">
+          <signal_cue_instantly cue="md.Interact_Menu_API.Add_Action"
+            param="table[
             $id='auto_set_turret',
             $text={2407201,1},
             $section='order',
             $callback=OnSelect,
             $echo=$ships
           ]" />
+        </do_if>
       </actions>
     </cue>
 

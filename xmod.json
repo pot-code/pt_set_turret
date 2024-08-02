@@ -15,11 +15,5 @@
       "description": "auto set turret behavior"
     }
   ],
-  "dependencies": [
-    {
-      "id": "kuerteeUIExtensionsAndHUD",
-      "version": 620,
-      "optional": false
-    }
-  ]
+  "dependencies": []
 }
