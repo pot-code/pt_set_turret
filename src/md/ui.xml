@@ -19,15 +19,6 @@
           </do_if>
         </do_for_each>
 
-        <signal_cue_instantly cue="md.Interact_Menu_API.Add_Action"
-          param="table[
-            $id='auto_set_turret',
-            $text={2407201,1},
-            $section='interaction',
-            $callback=OnSelect,
-            $echo=$ships
-          ]" />
-
         <do_if value="$ships.cound gt 1">
           <signal_cue_instantly cue="md.Interact_Menu_API.Add_Action"
             param="table[
@@ -38,6 +29,16 @@
             $echo=$ships
           ]" />
         </do_if>
+        <do_else>
+          <signal_cue_instantly cue="md.Interact_Menu_API.Add_Action"
+            param="table[
+            $id='auto_set_turret',
+            $text={2407201,1},
+            $section='interaction',
+            $callback=OnSelect,
+            $echo=$ships
+          ]" />
+        </do_else>
       </actions>
     </cue>
 
