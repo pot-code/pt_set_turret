@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdscript name="AutoSetTurretUI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="md.xsd">
+  <cues>
+    <cue name="Main" instantiate="true" namespace="this">
+      <conditions>
+        <event_cue_signalled cue="md.Interact_Menu_API.Get_Actions" />
+        <check_value
+          value="
+            event.param.$object.isplayerowned and
+            event.param.$object.isclass.ship
+          " />
+      </conditions>
+      <actions>
+        <set_value name="$ships" exact="[event.param.$object]" />
+        <do_for_each name="$ship" in="event.param.$selectedplayerships">
+          <do_if value="not $ships.indexof.{$ship}">
+            <append_to_list name="$ships" exact="$ship" />
+          </do_if>
+        </do_for_each>
+
+        <signal_cue_instantly cue="md.Interact_Menu_API.Add_Action"
+          param="table[
+            $id='auto_set_turret',
+            $text={2407201,1},
+            $section='interaction',
+            $callback=OnSelect,
+            $echo=$ships
+          ]" />
+      </actions>
+    </cue>
+
+    <cue name="OnSelect" instantiate="true" namespace="this">
+      <conditions>
+        <event_cue_signalled />
+      </conditions>
+      <actions>
+        <set_value name="$ships" exact="event.param.$echo" />
+        <do_for_each name="$ship" in="$ships">
+          <run_actions ref="md.AutoSetTurret.ListShipTurrets" result="$turrets">
+            <param name="ship" value="$ship" />
+          </run_actions>
+          <do_if value="$turrets and $turrets.count gt 0">
+            <run_actions ref="md.AutoSetTurret.SetTurretMode">
+              <param name="ship" value="$ship" />
+              <param name="turrets" value="$turrets" />
+            </run_actions>
+          </do_if>
+        </do_for_each>
+      </actions>
+    </cue>
+  </cues>
+</mdscript>

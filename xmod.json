@@ -1,0 +1,25 @@
+{
+  "$schema": "https://gist.githubusercontent.com/pot-code/1ce967bcfb81568b688997d4121812a8/raw/29e1358086df99495964078f6c2bf4d3560fc4cb/xmod.json",
+  "id": "2024072811",
+  "name": "PT: Set Turret",
+  "description": "auto set turret behavior",
+  "date": "2024-07-28",
+  "version": 2,
+  "author": "pot",
+  "save": false,
+  "sync": false,
+  "output": "build",
+  "translations": [
+    {
+      "language": 44,
+      "description": "auto set turret behavior"
+    }
+  ],
+  "dependencies": [
+    {
+      "id": "kuerteeUIExtensionsAndHUD",
+      "version": 620,
+      "optional": false
+    }
+  ]
+}
