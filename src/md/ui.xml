@@ -2,7 +2,7 @@
 <mdscript name="AutoSetTurretUI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="md.xsd">
   <cues>
-    <cue name="Main" instantiate="true" namespace="this">
+    <cue name="Main" instantiate="true">
       <conditions>
         <event_cue_signalled cue="md.Interact_Menu_API.Get_Actions" />
         <check_value
@@ -42,7 +42,27 @@
       </actions>
     </cue>
 
-    <cue name="OnSelect" instantiate="true" namespace="this">
+    <cue name="OnShipBuilt" instantiate="true">
+      <conditions>
+        <event_player_built_ship />
+        <check_any>
+          <check_value value="event.param.type"
+            list="[
+              shiptype.battleship,
+              shiptype.carrier,
+              shiptype.corvette,
+              shiptype.destroyer,
+              shiptype.frigate,
+              shiptype.gunboat,
+            ]" />
+        </check_any>
+      </conditions>
+      <actions>
+        <signal_cue_instantly cue="md.AutoSetTurretUI.OnSelect" param="table[$echo=[event.param]]" />
+      </actions>
+    </cue>
+
+    <cue name="OnSelect" instantiate="true">
       <conditions>
         <event_cue_signalled />
       </conditions>

@@ -60,7 +60,7 @@
 
         <do_for_each name="$turret" in="$turrets">
           <do_if value="$anti_captial.indexof.{$turret.name}">
-            <set_weapon_mode weapon="$turret" weaponmode="weaponmode.prefercapital" />
+            <set_weapon_mode weapon="$turret" weaponmode="weaponmode.attackcapital" />
           </do_if>
           <do_if value="$anti_fighter.indexof.{$turret.name}">
             <set_weapon_mode weapon="$turret" weaponmode="weaponmode.attackfighters" />
