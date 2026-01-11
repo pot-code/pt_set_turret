@@ -37,6 +37,16 @@
             'TEL M Beam Turret Mk1',
             'TER L Beam Turret Mk1',
             'TER M Beam Turret Mk1',
+            'ARG L Pulse Turret Mk1',
+            'ARG M Pulse Turret Mk1',
+            'PAR L Pulse Turret Mk1',
+            'PAR M Pulse Turret Mk1',
+            'SPL L Pulse Turret Mk1',
+            'SPL M Pulse Turret Mk1',
+            'TEL L Pulse Turret Mk1',
+            'TEL M Pulse Turret Mk1',
+            'TER L Pulse Turret Mk1',
+            'TER M Pulse Turret Mk1',
             'ARG M Flak Turret Mk1',
             'SPL M Flak Turret Mk1',
             'ARG M Bolt Turret Mk1',
@@ -56,14 +66,15 @@
             'PAR M Plasma Turret Mk1',
             'TEL L Plasma Turret Mk1',
             'TEL M Plasma Turret Mk1',
-          ]" />
+          ]"
+        />
 
         <do_for_each name="$turret" in="$turrets">
           <do_if value="$anti_captial.indexof.{$turret.name}">
-            <set_weapon_mode weapon="$turret" weaponmode="weaponmode.attackcapital" />
+            <set_weapon_mode weapon="$turret" weaponmode="weaponmode.prefercapital" />
           </do_if>
           <do_if value="$anti_fighter.indexof.{$turret.name}">
-            <set_weapon_mode weapon="$turret" weaponmode="weaponmode.attackfighters" />
+            <set_weapon_mode weapon="$turret" weaponmode="weaponmode.preferfighters" />
           </do_if>
         </do_for_each>
       </actions>
